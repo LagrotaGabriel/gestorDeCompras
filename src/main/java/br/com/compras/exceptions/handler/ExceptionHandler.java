@@ -2,6 +2,7 @@ package br.com.compras.exceptions.handler;
 
 import br.com.compras.exceptions.models.StandartError;
 import br.com.compras.modules.cliente.actions.cadastro.exceptions.CpfDoClienteJaExisteException;
+import br.com.compras.modules.produto.actions.cadastro.exceptions.NomeDoProdutoJaExisteException;
 import jakarta.annotation.Nonnull;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolation;
@@ -20,13 +21,27 @@ import java.util.Map;
 public class ExceptionHandler {
 
     @org.springframework.web.bind.annotation.ExceptionHandler(CpfDoClienteJaExisteException.class)
-    public ResponseEntity<StandartError> invalidRequestException(HttpServletRequest req,
-                                                                 CpfDoClienteJaExisteException cpfDoClienteJaExisteException) {
+    public ResponseEntity<StandartError> cpfDoClienteJaExisteExceptionHandler(HttpServletRequest req,
+                                                                              CpfDoClienteJaExisteException cpfDoClienteJaExisteException) {
 
         StandartError standartError = StandartError.builder()
                 .localDateTime(LocalDateTime.now().toString())
                 .status(400)
                 .error(cpfDoClienteJaExisteException.getMessage())
+                .path(req.getRequestURI())
+                .build();
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(standartError);
+    }
+
+    @org.springframework.web.bind.annotation.ExceptionHandler(NomeDoProdutoJaExisteException.class)
+    public ResponseEntity<StandartError> nomeDoProdutoJaExisteExceptionHandler(HttpServletRequest req,
+                                                                               NomeDoProdutoJaExisteException nomeDoProdutoJaExisteException) {
+
+        StandartError standartError = StandartError.builder()
+                .localDateTime(LocalDateTime.now().toString())
+                .status(400)
+                .error(nomeDoProdutoJaExisteException.getMessage())
                 .path(req.getRequestURI())
                 .build();
 
