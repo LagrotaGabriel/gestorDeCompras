@@ -25,6 +25,6 @@ public class ProdutoEntity {
     private UUID id;
 
     @Comment("Nome do produto")
-    @Column(name = "STR_NOME_PDT", unique = true, nullable = false, updatable = false, length = 60)
+    @Column(name = "STR_NOME_PDT", nullable = false, updatable = false, length = 60)
     private String nome;
 }
