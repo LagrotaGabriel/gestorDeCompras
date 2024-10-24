@@ -1,12 +1,12 @@
 package br.com.compras.modules.cliente.entity;
 
-import br.com.compras.modules.compras.entity.CompraEntity;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.*;
 import org.hibernate.annotations.Comment;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -31,9 +31,4 @@ public class ClienteEntity {
     @Comment("CPF do cliente")
     @Column(name = "STR_CPF_CLN", nullable = false, length = 14)
     private String cpf;
-
-    @ToString.Exclude
-    @Comment("Lista de compras do cliente")
-    @OneToMany(targetEntity = CompraEntity.class, orphanRemoval = true, cascade = CascadeType.ALL)
-    private List<CompraEntity> compras = new ArrayList<>();
 }
