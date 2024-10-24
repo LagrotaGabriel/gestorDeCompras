@@ -2,6 +2,9 @@ package br.com.compras.exceptions.handler;
 
 import br.com.compras.exceptions.models.StandartError;
 import br.com.compras.modules.cliente.actions.cadastro.exceptions.CpfDoClienteJaExisteException;
+import br.com.compras.modules.compras.exceptions.ClienteNaoLocalizadoException;
+import br.com.compras.modules.compras.exceptions.ProdutoAdquiridoNaoLocalizadoException;
+import br.com.compras.modules.compras.exceptions.QuantidadeMaximaDeProdutosAdquiridosExcedidaException;
 import br.com.compras.modules.produto.actions.cadastro.exceptions.NomeDoProdutoJaExisteException;
 import jakarta.annotation.Nonnull;
 import jakarta.servlet.http.HttpServletRequest;
@@ -46,6 +49,48 @@ public class ExceptionHandler {
                 .build();
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(standartError);
+    }
+
+    @org.springframework.web.bind.annotation.ExceptionHandler(QuantidadeMaximaDeProdutosAdquiridosExcedidaException.class)
+    public ResponseEntity<StandartError> quantidadeMaximaDeProdutosAdquiridosExcedidaExceptionHandler(HttpServletRequest req,
+                                                                                                      QuantidadeMaximaDeProdutosAdquiridosExcedidaException quantidadeMaximaDeProdutosAdquiridosExcedidaException) {
+
+        StandartError standartError = StandartError.builder()
+                .localDateTime(LocalDateTime.now().toString())
+                .status(400)
+                .error(quantidadeMaximaDeProdutosAdquiridosExcedidaException.getMessage())
+                .path(req.getRequestURI())
+                .build();
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(standartError);
+    }
+
+    @org.springframework.web.bind.annotation.ExceptionHandler(ProdutoAdquiridoNaoLocalizadoException.class)
+    public ResponseEntity<StandartError> produtoAdquiridoNaoLocalizadoExceptionHandler(HttpServletRequest req,
+                                                                                       ProdutoAdquiridoNaoLocalizadoException produtoAdquiridoNaoLocalizadoException) {
+
+        StandartError standartError = StandartError.builder()
+                .localDateTime(LocalDateTime.now().toString())
+                .status(404)
+                .error(produtoAdquiridoNaoLocalizadoException.getMessage())
+                .path(req.getRequestURI())
+                .build();
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(standartError);
+    }
+
+    @org.springframework.web.bind.annotation.ExceptionHandler(ClienteNaoLocalizadoException.class)
+    public ResponseEntity<StandartError> clienteNaoLocalizadoExceptionHandler(HttpServletRequest req,
+                                                                              ClienteNaoLocalizadoException clienteNaoLocalizadoException) {
+
+        StandartError standartError = StandartError.builder()
+                .localDateTime(LocalDateTime.now().toString())
+                .status(404)
+                .error(clienteNaoLocalizadoException.getMessage())
+                .path(req.getRequestURI())
+                .build();
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(standartError);
     }
 
     @Nonnull
