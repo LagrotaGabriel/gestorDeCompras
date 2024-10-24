@@ -1,0 +1,7 @@
+logging:
+  level:
+    org.springframework.web: INFO
+    guru.springframework.controllers: INFO
+    br.com.compras: INFO
+    org.hibernate: INFO
+    org.springframework.security: INFO

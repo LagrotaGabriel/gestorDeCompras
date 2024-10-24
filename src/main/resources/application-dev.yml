@@ -1,0 +1,10 @@
+server:
+  port: 8070
+
+logging:
+  level:
+    org.springframework.web: INFO
+    guru.springframework.controllers: INFO
+    br.com.compras: TRACE
+    org.hibernate: INFO
+    org.springframework.security: INFO
