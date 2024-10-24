@@ -16,8 +16,8 @@ public class CriaCompraRequest {
 
     @JsonProperty("quantidade")
     @NotNull(message = "A quantidade de produtos adquiridos deverá ser informada")
-    @Min(message = "A quantidade mínima não pode ser menor do que {value}", value = 0)
-    @Max(message = "A quantidade mínima não pode ser maior do que {value}", value = 999)
+    @Min(message = "A quantidade de produtos adquiridos não pode ser menor do que {value}", value = 1)
+    @Max(message = "A quantidade de produtos adquiridos não pode ser maior do que {value}", value = 3)
     @Parameter(name = "Quantidade mínima ideal do produto em estoque", example = "5", required = true)
     private Integer quantidade;
 
