@@ -1,0 +1,304 @@
+{
+	"info": {
+		"_postman_id": "1f013f79-ca92-4896-86d9-20b198041acc",
+		"name": "Cliente",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19701119"
+	},
+	"item": [
+		{
+			"name": "Cadastro",
+			"item": [
+				{
+					"name": "Cadastro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cpf\": \"47253527922\", \r\n    \"nome\": \"Gabriel Lagrota\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{APP_URL}}/api/srv-compras/v1/cliente",
+							"host": [
+								"{{APP_URL}}"
+							],
+							"path": [
+								"api",
+								"srv-compras",
+								"v1",
+								"cliente"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201 - Sucesso",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cpf\": \"472.535.279-22\", \r\n    \"nome\": \"Gabriel Lagrota\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/srv-compras/v1/cliente",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"srv-compras",
+										"v1",
+										"cliente"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 24 Oct 2024 15:18:32 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"60a0b5ff-9a56-4c71-ad9d-2850fbd8f09c\"\n}"
+						},
+						{
+							"name": "400 - Dados não informados",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/srv-compras/v1/cliente",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"srv-compras",
+										"v1",
+										"cliente"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 24 Oct 2024 15:16:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"cpf\": \"O CPF do cliente deverá ser informado\",\n    \"nome\": \"O nome do cliente deverá ser informado\"\n}"
+						},
+						{
+							"name": "400 - CPF Inválido (Sem máscara)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cpf\": \"47253527922\", \r\n    \"nome\": \"Gabriel Lagrota\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/srv-compras/v1/cliente",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"srv-compras",
+										"v1",
+										"cliente"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 24 Oct 2024 15:16:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"cpf\": \"O CPF informado é inválido. Use um padrão válido. Exemplo: 111.111.111-11\"\n}"
+						},
+						{
+							"name": "400 - Nome muito grande",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cpf\": \"472.535.279-22\", \r\n    \"nome\": \"Gabriel Henrique Afonso Cruz Lagrota dos Santos Medeiro Menezes de Araujo\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/srv-compras/v1/cliente",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"srv-compras",
+										"v1",
+										"cliente"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 24 Oct 2024 15:17:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"nome\": \"O nome do cliente deve conter no máximo 60 caracteres\"\n}"
+						},
+						{
+							"name": "400 - CPF Já existe",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cpf\": \"472.535.279-22\", \r\n    \"nome\": \"Gabriel Lagrota\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/srv-compras/v1/cliente",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"srv-compras",
+										"v1",
+										"cliente"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 24 Oct 2024 15:20:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"localDateTime\": \"2024-10-24T12:20:35.522666400\",\n    \"status\": 400,\n    \"error\": \"O CPF informado já existe. Insira outro CPF e tente novamente.\",\n    \"path\": \"/api/srv-compras/v1/cliente\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
