@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "93bb4fd8-681e-4b8d-8b92-630aa5c97263",
+		"name": "Produto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19701119"
+	},
+	"item": [
+		{
+			"name": "Cadastro",
+			"item": [
+				{
+					"name": "Cadastro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Liquidificador\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{APP_URL}}/api/srv-compras/v1/produto",
+							"host": [
+								"{{APP_URL}}"
+							],
+							"path": [
+								"api",
+								"srv-compras",
+								"v1",
+								"produto"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201 - Sucesso",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\": \"Liquidificador\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/srv-compras/v1/produto",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"srv-compras",
+										"v1",
+										"produto"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 24 Oct 2024 03:05:10 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"ae89b946-42a1-4c71-9ba7-08818c3a0bae\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
