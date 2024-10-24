@@ -11,6 +11,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Optional;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -37,6 +39,22 @@ class ProdutoDAOImplTest {
         Assertions.assertEquals(
                 "ProdutoEntity(id=74bcd515-655c-4def-8dc8-3329ccbdf62e, nome=Batedeira)",
                 produtoEntityPersistido.toString()
+        );
+    }
+
+    @Test
+    @DisplayName("Deve testar implementação de busca de produto por NOME")
+    void deveTestarImplementacaoDeBuscaDeProdutoPorNome() {
+
+        ProdutoEntity produtoEntityMock = ProdutoEntityMock.builder().build();
+
+        when(produtoRepository.findByNomeIgnoreCase(any())).thenReturn(Optional.of(produtoEntityMock));
+
+        ProdutoEntity produtoEncontrado = produtoDAOImpl.buscaPorNome("555.555.555-55");
+
+        Assertions.assertEquals(
+                "ProdutoEntity(id=74bcd515-655c-4def-8dc8-3329ccbdf62e, nome=Batedeira)",
+                produtoEncontrado.toString()
         );
     }
 }

@@ -40,7 +40,7 @@ public class ProdutoDAOImpl implements ProdutoDAO {
         log.trace("nome: {}", nome);
 
         log.debug("Realizando busca do produto por nome no banco de dados...");
-        Optional<ProdutoEntity> produtoOptional = produtoRepository.findByNome(nome);
+        Optional<ProdutoEntity> produtoOptional = produtoRepository.findByNomeIgnoreCase(nome);
         log.debug("Busca realizada com sucesso");
         log.trace("produtoOptional: {}", produtoOptional);
 
