@@ -6,6 +6,8 @@ import br.com.compras.modules.produto.entity.mock.ProdutoEntityMock;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class CompraEntityMock {
@@ -44,5 +46,13 @@ public class CompraEntityMock {
 
     public CompraEntity build() {
         return compraEntity;
+    }
+
+    public List<CompraEntity> buildList() {
+
+        List<CompraEntity> compraEntityList = new ArrayList<>();
+        compraEntityList.add(compraEntity);
+
+        return compraEntityList;
     }
 }

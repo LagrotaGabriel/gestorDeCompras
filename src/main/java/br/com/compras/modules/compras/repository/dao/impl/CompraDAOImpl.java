@@ -8,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Slf4j
@@ -52,5 +54,32 @@ public class CompraDAOImpl implements CompraDAO {
 
         log.debug("Retornando contagem obtida...");
         return quantidadeDeProdutosAdquiridos;
+    }
+
+    @Override
+    public List<CompraEntity> realizaPesquisa(String buscaPorCpfCliente,
+                                              String buscaPorNomeProduto,
+                                              LocalDateTime dataInicio,
+                                              LocalDateTime dataFim) {
+
+        log.debug("Metodo responsavel por implementar pesquisa de compras no banco de dados acessado");
+        log.trace("buscaPorCpfCliente: {}", buscaPorCpfCliente);
+        log.trace("buscaPorNomeProduto: {}", buscaPorNomeProduto);
+        log.trace("dataInicio: {}", dataInicio);
+        log.trace("dataFim: {}", dataFim);
+
+        log.debug("Realizando pesquisa no banco de dados...");
+        List<CompraEntity> comprasEncontradas =
+                compraRepository.pesquisaCompras(
+                        buscaPorCpfCliente,
+                        buscaPorNomeProduto,
+                        dataInicio,
+                        dataFim
+                );
+        log.debug("Pesquisa no banco de dados realizada com sucesso");
+        log.trace("comprasEncontradas: {}", comprasEncontradas);
+
+        log.debug("Retornando compras obtidas...");
+        return comprasEncontradas;
     }
 }

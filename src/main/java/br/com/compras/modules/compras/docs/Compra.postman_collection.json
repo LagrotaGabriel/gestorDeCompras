@@ -256,6 +256,206 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Pesquisa",
+			"item": [
+				{
+					"name": "Pesquisa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cpfCliente\": \"535\",\r\n    \"nomeProduto\": \"DIFI\",\r\n    \"rangeDataPesquisa\": {\r\n        \"dataInicio\": \"2024-10-24\", \r\n        \"dataFim\": \"2024-10-25\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{APP_URL}}/api/srv-compras/v1/compra/pesquisa",
+							"host": [
+								"{{APP_URL}}"
+							],
+							"path": [
+								"api",
+								"srv-compras",
+								"v1",
+								"compra",
+								"pesquisa"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Com resultados retornados",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cpfCliente\": \"535\",\r\n    \"nomeProduto\": \"DIFI\",\r\n    \"rangeDataPesquisa\": {\r\n        \"dataInicio\": \"2024-10-24\", \r\n        \"dataFim\": \"2024-10-25\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/srv-compras/v1/compra/pesquisa",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"srv-compras",
+										"v1",
+										"compra",
+										"pesquisa"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 25 Oct 2024 03:28:12 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"4aede67d-e650-408c-8e4f-6a181a51df44\",\n        \"dataHoraCadastro\": \"2024-10-25T00:27:58.464746\",\n        \"quantidade\": 1,\n        \"valorUnitario\": 100,\n        \"valorTotal\": 100,\n        \"nomeProduto\": \"Liquidificador\",\n        \"nomeCliente\": \"Gabriel Lagrota\",\n        \"cpfCliente\": \"472.535.279-22\"\n    },\n    {\n        \"id\": \"cf3151e8-27f9-4782-a190-7a92caef08b3\",\n        \"dataHoraCadastro\": \"2024-10-25T00:27:59.357221\",\n        \"quantidade\": 1,\n        \"valorUnitario\": 100,\n        \"valorTotal\": 100,\n        \"nomeProduto\": \"Liquidificador\",\n        \"nomeCliente\": \"Gabriel Lagrota\",\n        \"cpfCliente\": \"472.535.279-22\"\n    },\n    {\n        \"id\": \"10da2124-952a-4c16-b73d-a9ccd4609d0c\",\n        \"dataHoraCadastro\": \"2024-10-25T00:28:00.213726\",\n        \"quantidade\": 1,\n        \"valorUnitario\": 100,\n        \"valorTotal\": 100,\n        \"nomeProduto\": \"Liquidificador\",\n        \"nomeCliente\": \"Gabriel Lagrota\",\n        \"cpfCliente\": \"472.535.279-22\"\n    }\n]"
+						},
+						{
+							"name": "200 - Sem resultados retornados",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cpfCliente\": null,\r\n    \"nomeProduto\": null,\r\n    \"rangeDataPesquisa\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/srv-compras/v1/compra/pesquisa",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"srv-compras",
+										"v1",
+										"compra",
+										"pesquisa"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 25 Oct 2024 03:17:36 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						},
+						{
+							"name": "400 - dataPesquisa informada sem valores preenchidos",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cpfCliente\": null,\r\n    \"nomeProduto\": null,\r\n    \"rangeDataPesquisa\": {\r\n        \"dataInicio\": null, \r\n        \"dataFim\": null\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/srv-compras/v1/compra/pesquisa",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"srv-compras",
+										"v1",
+										"compra",
+										"pesquisa"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 25 Oct 2024 03:18:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"rangeDataPesquisa.dataFim\": \"Caso a pesquisa por range de data seja informada, a data de término da busca é obrigatória\",\n    \"rangeDataPesquisa.dataInicio\": \"Caso a pesquisa por range de data seja informada, a data de inicio é obrigatória\"\n}"
+						}
+					]
+				}
+			]
 		}
 	]
 }
