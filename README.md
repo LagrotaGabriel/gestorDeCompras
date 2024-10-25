@@ -4,6 +4,9 @@ Este projeto é um sistema de cadastro de compras desenvolvido em Java com Sprin
 RESTful para gerenciar as entidades Compra, Produto e Cliente, permitindo que usuários cadastrem, consultem e obtenham
 relatórios de compras.
 
+É possível visualizar o Kanban do projeto no link abaixo:
+https://github.com/users/LagrotaGabriel/projects/3
+
 ## Tópicos
 
 - [Fluxo](#fluxo)
@@ -74,7 +77,7 @@ produtos previamente cadastrados;
 - Postman
 - Lombok
 - J Unit
-- 
+
 ## Implementações futuras
 
 Futuramente a aplicação deverá possuir as seguintes implementações:
