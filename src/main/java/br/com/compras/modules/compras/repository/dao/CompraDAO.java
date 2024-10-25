@@ -1,5 +1,7 @@
 package br.com.compras.modules.compras.repository.dao;
 
+import br.com.compras.modules.compras.actions.relatorio.dto.ProdutoRelatorioCompraResponse;
+import br.com.compras.modules.compras.actions.relatorio.dto.RelatorioCompraResponse;
 import br.com.compras.modules.compras.entity.CompraEntity;
 
 import java.time.LocalDateTime;
@@ -22,5 +24,15 @@ public interface CompraDAO {
             String buscaPorNomeProduto,
             LocalDateTime dataInicio,
             LocalDateTime dataFim
+    );
+
+    RelatorioCompraResponse obtemCalculosDeRelatorioDeCompras(
+            LocalDateTime dataInicioRelatorio,
+            LocalDateTime dataFimRelatorio
+    );
+
+    List<ProdutoRelatorioCompraResponse> obtemLevantamentoDeDadosDeComprasPorProduto(
+            LocalDateTime dataInicioRelatorioProduto,
+            LocalDateTime dataFimRelatorioProduto
     );
 }
