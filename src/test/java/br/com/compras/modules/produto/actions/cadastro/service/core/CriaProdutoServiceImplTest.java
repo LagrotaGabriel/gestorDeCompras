@@ -6,6 +6,7 @@ import br.com.compras.modules.produto.actions.cadastro.dto.response.CriaProdutoR
 import br.com.compras.modules.produto.actions.cadastro.dto.response.mock.CriaProdutoResponseMock;
 import br.com.compras.modules.produto.actions.cadastro.service.core.impl.CriaProdutoServiceImpl;
 import br.com.compras.modules.produto.actions.cadastro.service.mapper.CriaProdutoMapperService;
+import br.com.compras.modules.produto.actions.cadastro.service.validator.CriaProdutoValidatorService;
 import br.com.compras.modules.produto.entity.ProdutoEntity;
 import br.com.compras.modules.produto.entity.mock.ProdutoEntityMock;
 import br.com.compras.modules.produto.repository.dao.ProdutoDAO;
@@ -17,6 +18,7 @@ import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -25,6 +27,9 @@ class CriaProdutoServiceImplTest {
 
     @InjectMocks
     CriaProdutoServiceImpl criaProdutoService;
+
+    @Mock
+    CriaProdutoValidatorService validatorService;
 
     @Mock
     CriaProdutoMapperService mapperService;
@@ -40,6 +45,7 @@ class CriaProdutoServiceImplTest {
         ProdutoEntity produtoEntityMock = ProdutoEntityMock.builder().build();
         CriaProdutoResponse criaProdutoResponseMock = CriaProdutoResponseMock.builder().build();
 
+        doNothing().when(validatorService).verificaSeNomeInformadoJaExiste(any());
         when(mapperService.realizaCriacaoDeProdutoEntityAPartirDeCriaProdutoRequest(any())).thenReturn(produtoEntityMock);
         when(produtoDAO.persisteEntidade(any())).thenReturn(produtoEntityMock);
         when(mapperService.realizaCriacaoDeCriaProdutoResponseAPartirDeProdutoEntity(any())).thenReturn(criaProdutoResponseMock);

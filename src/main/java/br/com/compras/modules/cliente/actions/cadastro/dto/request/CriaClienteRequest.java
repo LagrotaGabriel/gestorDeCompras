@@ -17,7 +17,7 @@ public class CriaClienteRequest {
     @JsonProperty("cpf")
     @NotEmpty(message = "O CPF do cliente deverá ser informado")
     @Parameter(name = "CPF do cliente", example = "472.545.279-22", required = true)
-    @Size(message = "O CPF do cliente deverá ter no máximo {max} caracteres", max = 14)
+    @Size(message = "O CPF do cliente deverá possuir {max} caracteres", max = 14, min = 14)
     @Pattern(regexp = "\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}", message = "O CPF informado é inválido. Use um padrão válido. Exemplo: 111.111.111-11")
     private String cpf;
 

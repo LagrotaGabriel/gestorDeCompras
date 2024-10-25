@@ -1,0 +1,261 @@
+{
+	"info": {
+		"_postman_id": "11fd7cf6-d29e-4e4a-a256-6ad84c92c905",
+		"name": "Compra",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19701119"
+	},
+	"item": [
+		{
+			"name": "Cadastro",
+			"item": [
+				{
+					"name": "Cadastro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quantidade\": 1, \r\n    \"valorUnitario\": 100.0, \r\n    \"nomeProduto\": \"Liquidificador\", \r\n    \"cpfComprador\": \"472.535.279-22\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{APP_URL}}/api/srv-compras/v1/compra",
+							"host": [
+								"{{APP_URL}}"
+							],
+							"path": [
+								"api",
+								"srv-compras",
+								"v1",
+								"compra"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201 - Sucesso",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"quantidade\": 1, \r\n    \"valorUnitario\": 100.0, \r\n    \"nomeProduto\": \"Liquidificador\", \r\n    \"cpfComprador\": \"472.535.279-22\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/srv-compras/v1/compra",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"srv-compras",
+										"v1",
+										"compra"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 24 Oct 2024 19:13:01 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"cf004916-9faa-4b6f-9178-dd781644cdee\"\n}"
+						},
+						{
+							"name": "400 - Limite de produtos excedido",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"quantidade\": 1, \r\n    \"valorUnitario\": 100.0, \r\n    \"nomeProduto\": \"Liquidificador\", \r\n    \"cpfComprador\": \"472.535.279-22\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/srv-compras/v1/compra",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"srv-compras",
+										"v1",
+										"compra"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 24 Oct 2024 19:23:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"localDateTime\": \"2024-10-24T16:23:00.583274600\",\n    \"status\": 400,\n    \"error\": \"A quantidade atual de produtos obtidos pelo cliente excede o limite permitido. (Máximo: 3 produtos por CPF)\",\n    \"path\": \"/api/srv-compras/v1/compra\"\n}"
+						},
+						{
+							"name": "404 - Cliente não localizado",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"quantidade\": 1, \r\n    \"valorUnitario\": 100.0, \r\n    \"nomeProduto\": \"Liquidificador\", \r\n    \"cpfComprador\": \"472.535.279-22\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/srv-compras/v1/compra",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"srv-compras",
+										"v1",
+										"compra"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 24 Oct 2024 19:11:57 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"localDateTime\": \"2024-10-24T16:11:57.248108300\",\n    \"status\": 404,\n    \"error\": \"Nenhum cliente foi localizado através do CPF informado. Digite outro CPF e tente novamente.\",\n    \"path\": \"/api/srv-compras/v1/compra\"\n}"
+						},
+						{
+							"name": "404 - Produto não localizado",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"quantidade\": 1, \r\n    \"valorUnitario\": 100.0, \r\n    \"nomeProduto\": \"Liquidificador\", \r\n    \"cpfComprador\": \"472.535.279-22\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/srv-compras/v1/compra",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"srv-compras",
+										"v1",
+										"compra"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 24 Oct 2024 19:12:39 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"localDateTime\": \"2024-10-24T16:12:39.531326400\",\n    \"status\": 404,\n    \"error\": \"Nenhum produto foi localizado através da nomenclatura informada. Digite outro nome de produto e tente novamente.\",\n    \"path\": \"/api/srv-compras/v1/compra\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -7,4 +7,8 @@ public interface ProdutoDAO {
     ProdutoEntity persisteEntidade(
             ProdutoEntity produtoEntity
     );
+
+    ProdutoEntity buscaPorNome(
+            String nome
+    );
 }
