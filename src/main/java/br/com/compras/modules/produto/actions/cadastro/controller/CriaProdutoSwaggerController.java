@@ -2,6 +2,7 @@ package br.com.compras.modules.produto.actions.cadastro.controller;
 
 import br.com.compras.modules.produto.actions.cadastro.dto.request.CriaProdutoRequest;
 import br.com.compras.modules.produto.actions.cadastro.dto.response.CriaProdutoResponse;
+import br.com.compras.modules.produto.actions.cadastro.exceptions.NomeDoProdutoJaExisteException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -20,7 +21,10 @@ public interface CriaProdutoSwaggerController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201",
                     description = "Produto criado com sucesso",
-                    content = {@Content(mediaType = "application/json", schema = @Schema(implementation = CriaProdutoResponse.class))})
+                    content = {@Content(mediaType = "application/json", schema = @Schema(implementation = CriaProdutoResponse.class))}),
+            @ApiResponse(responseCode = "400",
+                    description = "O nome enviado para o produto já existe",
+                    content = {@Content(mediaType = "application/json", schema = @Schema(implementation = NomeDoProdutoJaExisteException.class))}),
     })
     ResponseEntity<CriaProdutoResponse> criaNovoProduto(
             @Valid @RequestBody CriaProdutoRequest criaProdutoRequest

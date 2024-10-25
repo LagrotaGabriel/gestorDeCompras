@@ -91,6 +91,108 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"id\": \"ae89b946-42a1-4c71-9ba7-08818c3a0bae\"\n}"
+						},
+						{
+							"name": "400 - Nome já existe",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\": \"Liquidificador\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/srv-compras/v1/produto",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"srv-compras",
+										"v1",
+										"produto"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 24 Oct 2024 18:04:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"localDateTime\": \"2024-10-24T15:04:02.775796100\",\n    \"status\": 400,\n    \"error\": \"O NOME informado já existe. Insira outro NOME e tente novamente.\",\n    \"path\": \"/api/srv-compras/v1/produto\"\n}"
+						},
+						{
+							"name": "400 - Nome não informado",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{APP_URL}}/api/srv-compras/v1/produto",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"srv-compras",
+										"v1",
+										"produto"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 24 Oct 2024 18:05:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"nome\": \"O nome do produto deve ser informado\"\n}"
 						}
 					]
 				}

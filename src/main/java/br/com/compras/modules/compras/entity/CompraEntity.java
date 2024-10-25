@@ -39,7 +39,8 @@ public class CompraEntity {
 
     @ToString.Exclude
     @Comment("Produto da compra")
-    @OneToOne(targetEntity = ProdutoEntity.class, fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = ProdutoEntity.class, fetch = FetchType.LAZY)
+    @JoinColumn(name = "COD_PRODUTO_CMP", referencedColumnName = "COD_PRODUTO_PDT", nullable = false, updatable = false)
     private ProdutoEntity produto;
 
     @ToString.Exclude

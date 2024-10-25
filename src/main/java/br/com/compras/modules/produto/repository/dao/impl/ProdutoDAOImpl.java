@@ -8,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -29,5 +31,20 @@ public class ProdutoDAOImpl implements ProdutoDAO {
 
         log.debug("Retornando produto persistido...");
         return produtoPersistido;
+    }
+
+    @Override
+    public ProdutoEntity buscaPorNome(String nome) {
+
+        log.debug("Metodo responsavel por realizar a busca de um produto por nome no banco de dados acessado");
+        log.trace("nome: {}", nome);
+
+        log.debug("Realizando busca do produto por nome no banco de dados...");
+        Optional<ProdutoEntity> produtoOptional = produtoRepository.findByNomeIgnoreCase(nome);
+        log.debug("Busca realizada com sucesso");
+        log.trace("produtoOptional: {}", produtoOptional);
+
+        log.debug("Retornando resultado da busca...");
+        return produtoOptional.orElse(null);
     }
 }
