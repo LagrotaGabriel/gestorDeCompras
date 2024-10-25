@@ -11,6 +11,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
 import java.util.UUID;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -57,6 +58,29 @@ class CompraDAOImplTest {
         Assertions.assertEquals(
                 1,
                 quantidadeDeProdutosPorIdAdquiridosPeloCliente
+        );
+    }
+
+    @Test
+    @DisplayName("Deve testar pesquisa de compras")
+    void deveTestarPesquisaDeCompras() {
+
+        List<CompraEntity> compraEntityMockList = CompraEntityMock.builder().buildList();
+
+        when(compraRepository.pesquisaCompras(any(), any(), any(), any())).thenReturn(compraEntityMockList);
+
+        List<CompraEntity> retornoRepositorio =
+                compraDAOImpl.realizaPesquisa(
+                        null,
+                        null,
+                        null,
+                        null
+                );
+
+        Assertions.assertEquals(
+                "[CompraEntity(id=74bcd515-655c-4def-8dc8-3329ccbdf62e, dataHoraCadastro=2024-10-24T16:35, " +
+                        "quantidade=1, valorUnitario=100.0)]",
+                retornoRepositorio.toString()
         );
     }
 }

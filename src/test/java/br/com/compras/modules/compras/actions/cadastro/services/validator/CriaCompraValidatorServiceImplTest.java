@@ -7,6 +7,7 @@ import br.com.compras.modules.compras.actions.cadastro.dto.request.mock.CriaComp
 import br.com.compras.modules.compras.actions.cadastro.services.validator.impl.CriaCompraValidatorServiceImpl;
 import br.com.compras.modules.compras.entity.CompraEntity;
 import br.com.compras.modules.compras.entity.mock.CompraEntityMock;
+import br.com.compras.modules.compras.exceptions.ClienteNaoLocalizadoException;
 import br.com.compras.modules.compras.exceptions.ProdutoAdquiridoNaoLocalizadoException;
 import br.com.compras.modules.compras.exceptions.QuantidadeMaximaDeProdutosAdquiridosExcedidaException;
 import br.com.compras.modules.compras.repository.dao.CompraDAO;
@@ -78,7 +79,7 @@ class CriaCompraValidatorServiceImplTest {
     @DisplayName("Deve testar validacao se algum cliente foi encontrado pelo CPF informado com erro")
     void deveTestarValidacaoSeAlgumClienteFoiEncontradoPeloCpfInformadoComErro() {
 
-        Assertions.assertThrows((ProdutoAdquiridoNaoLocalizadoException.class), () ->
+        Assertions.assertThrows((ClienteNaoLocalizadoException.class), () ->
                 criaCompraValidatorServiceImpl.validaSeAlgumClienteFoiEncontradoAtravesDoCpfInformado(
                         "111.111.111-11",
                         null
