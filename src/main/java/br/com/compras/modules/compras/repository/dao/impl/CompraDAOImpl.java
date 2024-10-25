@@ -1,5 +1,7 @@
 package br.com.compras.modules.compras.repository.dao.impl;
 
+import br.com.compras.modules.compras.actions.relatorio.dto.ProdutoRelatorioCompraResponse;
+import br.com.compras.modules.compras.actions.relatorio.dto.RelatorioCompraResponse;
 import br.com.compras.modules.compras.entity.CompraEntity;
 import br.com.compras.modules.compras.repository.CompraRepository;
 import br.com.compras.modules.compras.repository.dao.CompraDAO;
@@ -81,5 +83,47 @@ public class CompraDAOImpl implements CompraDAO {
 
         log.debug("Retornando compras obtidas...");
         return comprasEncontradas;
+    }
+
+    @Override
+    public RelatorioCompraResponse obtemCalculosDeRelatorioDeCompras(LocalDateTime dataInicioRelatorio,
+                                                                     LocalDateTime dataFimRelatorio) {
+
+        log.debug("Metodo responsavel por implementar obtencao de relatorio de compras no banco de dados acessado");
+        log.trace("dataInicioRelatorio: {}", dataInicioRelatorio);
+        log.trace("dataFimRelatorio: {}", dataFimRelatorio);
+
+        log.debug("Realizando obtencao do relatorio de compras no banco de dados...");
+        RelatorioCompraResponse relatorioCompraResponse =
+                compraRepository.obtemCalculosDeRelatorioDeCompras(
+                        dataInicioRelatorio,
+                        dataFimRelatorio
+                );
+        log.debug("Obtencao do relatorio de compras no banco de dados realizada");
+        log.trace("relatorioCompraResponse: {}", relatorioCompraResponse);
+
+        log.debug("Retornando relatorio de compras obtido...");
+        return relatorioCompraResponse;
+    }
+
+    @Override
+    public List<ProdutoRelatorioCompraResponse> obtemLevantamentoDeDadosDeComprasPorProduto(LocalDateTime dataInicioRelatorioProduto,
+                                                                                            LocalDateTime dataFimRelatorioProduto) {
+
+        log.debug("Metodo responsavel por implementar obtencao de relatorio individual de cada produto no banco de dados acessado");
+        log.trace("dataInicioRelatorioProduto: {}", dataInicioRelatorioProduto);
+        log.trace("dataFimRelatorioProduto: {}", dataFimRelatorioProduto);
+
+        log.debug("Realizando obtencao dos relatorios individuais de produtos no banco de dados...");
+        List<ProdutoRelatorioCompraResponse> produtoRelatorioCompraResponseList =
+                compraRepository.obtemLevantamentoDeDadosDeComprasPorProduto(
+                        dataInicioRelatorioProduto,
+                        dataFimRelatorioProduto
+                );
+        log.debug("Obtencao dos relatorios individuais de produtos no banco de dados realizada");
+        log.trace("produtoRelatorioCompraResponseList: {}", produtoRelatorioCompraResponseList);
+
+        log.debug("Retornando relatorios individuais obtidos...");
+        return produtoRelatorioCompraResponseList;
     }
 }

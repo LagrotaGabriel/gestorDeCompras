@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"quantidade\": 1, \r\n    \"valorUnitario\": 100.0, \r\n    \"nomeProduto\": \"Liquidificador\", \r\n    \"cpfComprador\": \"472.535.279-22\"\r\n}",
+							"raw": "{\r\n    \"quantidade\": 2, \r\n    \"valorUnitario\": 100.0, \r\n    \"nomeProduto\": \"Relógio\", \r\n    \"cpfComprador\": \"472.535.279-22\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -267,7 +267,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"cpfCliente\": \"535\",\r\n    \"nomeProduto\": \"DIFI\",\r\n    \"rangeDataPesquisa\": {\r\n        \"dataInicio\": \"2024-10-24\", \r\n        \"dataFim\": \"2024-10-25\"\r\n    }\r\n}",
+							"raw": "{\r\n    \"cpfCliente\": \"535\",\r\n    \"nomeProduto\": null,\r\n    \"rangeDataPesquisa\": {\r\n        \"dataInicio\": \"2024-10-24\", \r\n        \"dataFim\": \"2024-10-25\"\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -452,6 +452,157 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"rangeDataPesquisa.dataFim\": \"Caso a pesquisa por range de data seja informada, a data de término da busca é obrigatória\",\n    \"rangeDataPesquisa.dataInicio\": \"Caso a pesquisa por range de data seja informada, a data de inicio é obrigatória\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Relatorio",
+			"item": [
+				{
+					"name": "Relatorio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{APP_URL}}/api/srv-compras/v1/compra/relatorio?dataInicio=2024-10-29&dataFim=2024-10-26",
+							"host": [
+								"{{APP_URL}}"
+							],
+							"path": [
+								"api",
+								"srv-compras",
+								"v1",
+								"compra",
+								"relatorio"
+							],
+							"query": [
+								{
+									"key": "dataInicio",
+									"value": "2024-10-29"
+								},
+								{
+									"key": "dataFim",
+									"value": "2024-10-26"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Sucesso",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{APP_URL}}/api/srv-compras/v1/compra/relatorio?dataInicio=2024-10-20&dataFim=2024-10-26",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"srv-compras",
+										"v1",
+										"compra",
+										"relatorio"
+									],
+									"query": [
+										{
+											"key": "dataInicio",
+											"value": "2024-10-20"
+										},
+										{
+											"key": "dataFim",
+											"value": "2024-10-26"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 25 Oct 2024 14:53:16 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"quantidadeTotalDeComprasRealizadas\": 3,\n    \"quantidadeTotalDeProdutosAdquiridos\": 4,\n    \"valorTotalCompras\": 440,\n    \"produtosRelatorio\": [\n        {\n            \"nomeProduto\": \"RELÓGIO\",\n            \"valorTotalVendido\": 320,\n            \"quantidadeTotalVendida\": 3\n        },\n        {\n            \"nomeProduto\": \"LIQUIDIFICADOR\",\n            \"valorTotalVendido\": 120,\n            \"quantidadeTotalVendida\": 1\n        }\n    ]\n}"
+						},
+						{
+							"name": "200 - Sucesso sem resultados",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{APP_URL}}/api/srv-compras/v1/compra/relatorio?dataInicio=2024-10-29&dataFim=2024-10-26",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"api",
+										"srv-compras",
+										"v1",
+										"compra",
+										"relatorio"
+									],
+									"query": [
+										{
+											"key": "dataInicio",
+											"value": "2024-10-29"
+										},
+										{
+											"key": "dataFim",
+											"value": "2024-10-26"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 25 Oct 2024 14:54:06 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"quantidadeTotalDeComprasRealizadas\": 0,\n    \"quantidadeTotalDeProdutosAdquiridos\": 0,\n    \"valorTotalCompras\": 0,\n    \"produtosRelatorio\": []\n}"
 						}
 					]
 				}
