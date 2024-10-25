@@ -4,6 +4,7 @@ import br.com.compras.modules.cliente.entity.ClienteEntity;
 import br.com.compras.modules.compras.actions.cadastro.dto.request.CriaCompraRequest;
 import br.com.compras.modules.compras.actions.cadastro.services.validator.CriaCompraValidatorService;
 import br.com.compras.modules.compras.entity.CompraEntity;
+import br.com.compras.modules.compras.exceptions.ClienteNaoLocalizadoException;
 import br.com.compras.modules.compras.exceptions.ProdutoAdquiridoNaoLocalizadoException;
 import br.com.compras.modules.compras.exceptions.QuantidadeMaximaDeProdutosAdquiridosExcedidaException;
 import br.com.compras.modules.compras.repository.dao.CompraDAO;
@@ -63,7 +64,7 @@ public class CriaCompraValidatorServiceImpl implements CriaCompraValidatorServic
 
         if (clienteEncontrado == null) {
             log.warn("Nenhum cliente foi localizado atraves do CPF informado");
-            throw new ProdutoAdquiridoNaoLocalizadoException(
+            throw new ClienteNaoLocalizadoException(
                     "Nenhum cliente foi localizado através do CPF informado. Digite outro CPF e tente novamente."
             );
         }
